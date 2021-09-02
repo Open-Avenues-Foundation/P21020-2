@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const customers = require('../data/customers')
+const customers = require('../data/customerModel')
 
 const getindex = (req, res) => {
   return res.send('hi this is the homepage')
