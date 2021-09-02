@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const customers = require('../data/customerModel')
+const customers = require('../data/customersData')
 
 const getindex = (req, res) => {
   return res.send('hi this is the homepage')
@@ -22,7 +22,7 @@ const sanitizeEmails = (req, res) => {
     console.log(email[0])
     const regex = /[!#$%^&*(),?":{}|<>]/g
     const regex2 = /(\s)/g
-    let cleand = email[0].replace(regex, '')
+    let cleaned = email[0].replace(regex, '')
 
     cleanedEmail.push(cleaned)
   })
