@@ -9,7 +9,6 @@ const getAllCustomers = (req,res)=>{
 }
 
 const sanitizeEmails = (req,res)=>{
-    const specialChars = '!@#$%^&*()?/~`.,+=-_:;"' 
     let allEmails = []
     let cleanedEmail = []
     customers.forEach((customer)=>{
@@ -19,9 +18,14 @@ const sanitizeEmails = (req,res)=>{
     
     allEmails.forEach((email)=>{
         console.log(email[0])
-        const regex = /[!#$%^&*(),?":{}|<>]/g
+        const regex = /[!~#$%^&*(),?":{}|<>]/g || /(\s)/g
         const regex2 = /(\s)/g
         let cleaned = email[0].replace(regex, '')
+        cleaned = email[0].replace(regex2, '')
+        cleaned = email[0].replace('.ca', '.com')
+        cleaned = email[0].replace('.co', '.com')
+        cleaned = email[0].replace('.co,', '.com')
+        
         cleanedEmail.push(cleaned)
     })
 

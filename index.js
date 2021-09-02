@@ -14,5 +14,5 @@ app.get('/sanitize', sanitizeEmails)
 
 
 app.listen(port, ()=>{
-    console.log('your server feels mights running on port: ' + port)
+    console.log('your server feels mighty powerfull running on port: ' + port )
 })
