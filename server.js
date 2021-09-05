@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/', getIndex) // will display current customer before being cleaned
+app.get('/', getIndex) // will display current customer before being cleaned but later should display only cleaned data from db.
 app.post('/upload-csv', createData) // will read the data from csv file
 
 // Option 1: Passing parameters separately
@@ -19,7 +19,7 @@ const sequelize = new Sequelize('customers_DB', 'root', '123456789', {
   dialect: 'mysql'
 })
 
-// testing connection
+// testing my connection here
 sequelize
   .authenticate()
   .then(() => {

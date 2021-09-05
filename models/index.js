@@ -1,3 +1,6 @@
+// this file was auto created when we ran npx sequelize init
+// allows us to use db
+
 'use strict'
 
 const fs = require('fs')

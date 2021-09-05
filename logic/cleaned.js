@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 const validator = require('email-validator')
 const Sequelize = require('sequelize')
 
@@ -6,13 +8,25 @@ const sequelize = new Sequelize('customers_DB', 'root', '123456789', {
   dialect: 'mysql'
 })
 
+
+// we are taking the customers object read from file and converted into csv
+// we then running it against our email validator npm package
+// if email value is good we push it to clean emails if value is not clean we push it to bad 
+// list then attempt to clean it for the user
+// when we finished cleaning we should push the final data back to the cleaned already and return to the controller who will push back to the model 
+// or we could push it to model directly
+
 const cleaned = (req, res, customers) => {
   let cleanedCustomersList = []
   let emailsNeedingRepairs = []
   let cleanedCustomers = customers.map((customer) => {
+    // this will show the valid emails and push
+    // into cleanedcustomerslist
     if (validator.validate(customer.Email)) {
       cleanedCustomersList.push(customer)
     }
+    // else if there is a bad email
+    // it will push it to bad email list so we can fix them
     emailsNeedingRepairs.push(customer)
   })
 
@@ -21,6 +35,9 @@ const cleaned = (req, res, customers) => {
   console.log(cleanedCustomersList)
   console.log('here\'s a list of the bad emails ...')
   console.log(emailsNeedingRepairs)
+
+  // this was my logic to fix the bad emails
+  
   // emailsNeedingRepairs.map((badEmail)=>{
   //     const specialChars = "~!#$%^&*()_+-={}<>,?/':;"
   //     const trailingDots = "..."

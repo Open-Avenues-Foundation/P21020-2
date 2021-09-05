@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 const validator = require('email-validator')
 
-
+// this is proof concept that I can show a list of good emails and bad emails 
+// I would like to use logic/cleaned js instead of this file
 const cleaned = (req, res, customers) => {
   let myCleanedlist = {}
   const badEmailList = {}
