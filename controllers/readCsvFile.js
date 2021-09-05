@@ -3,7 +3,7 @@ const { cleaned } = require('../logic/cleaned')
 
 const dataController = (req, res) => {
   CSVToJSON()
-    .fromFile('./public/customers.csv')
+    .fromFile('./public/CSV-customers.csv')
     .then((customers) => {
       return cleaned(req, res, customers)
     })
