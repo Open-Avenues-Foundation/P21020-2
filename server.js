@@ -1,6 +1,4 @@
-// This server file is responsible for setting up everything
-// from the routes, to the db.
-
+/* eslint-disable no-console */
 const express = require('express')
 const db = require('./config/db')
 const app = express()
