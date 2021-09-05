@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const express = require('express')
 const Sequelize = require('sequelize')
 const app = express()
@@ -29,8 +30,6 @@ sequelize
   .catch((err) => {
     console.error('Unable to connect to the database:', err)
   })
-
- 
 
 
 // class Customer extends Model {}
