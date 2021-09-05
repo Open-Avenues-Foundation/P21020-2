@@ -27,5 +27,6 @@ db.sequelize
   })
 
 app.listen(PORT, () => {
-  console.log('running')
+  console.log(`Your Web server is running on http://localhost:${PORT} and you're connected to the database server`)
 })
+
