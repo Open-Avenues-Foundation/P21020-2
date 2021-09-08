@@ -1,16 +1,17 @@
+/* eslint-disable no-console */
 
-const { getIndexController } = require('../controllers/indexController')
-const { dataController } = require('../controllers/readCsvFile')
+const { getIndexController } = require('../controllers/index')
+const { dataController } = require('../controllers/customerController')
 
 // this file is just routing so we dont overload the server.js file
 // this will get the index which displays all customers
-const getIndex = (req, res) => {
+const allCustomers = (req, res) => {
   return getIndexController(req, res)
 }
 
 // this will use the uploaded data
-const createData = (req, res) => {
+const bulkCreateCustomers = (req, res) => {
   return dataController(req, res)
 }
 
-module.exports = { getIndex, createData }
+module.exports = { allCustomers, bulkCreateCustomers }

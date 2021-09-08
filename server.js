@@ -1,36 +1,32 @@
 /* eslint-disable no-console */
 const express = require('express')
-const Sequelize = require('sequelize')
+const db = require('./config/db')
 const app = express()
 const PORT = process.env.PORT || 7000
-const { getIndex, createData } = require('./router/router.js')
+const { allCustomers, bulkCreateCustomers } = require('./router/router.js')
 
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 
-app.get('/', getIndex) // will display current customer before being cleaned but later should display only cleaned data from db.
-app.post('/upload-csv', createData) // will read the data from csv file
+app.get('/', allCustomers) // will display current customer before being cleaned but later should display only cleaned data from db.
+app.post('/upload-csv', bulkCreateCustomers) // will read the data from csv file
 
-// Option 1: Passing parameters separately
-const sequelize = new Sequelize('customers_DB', 'root', '123456789', {
-  host: 'localhost',
-  dialect: 'mysql'
-})
 
 // testing my connection here
-sequelize
+db.sequelize
   .authenticate()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Your Web server is running on http://localhost:${PORT} and you're connected to the database server`)
-    })
+    console.log('connected to db server')
   })
   .catch((err) => {
     console.error('Unable to connect to the database:', err)
   })
 
+app.listen(PORT, () => {
+  console.log(`Your Web server is running on http://localhost:${PORT} and you're connected to the database server`)
+})
 
 // class Customer extends Model {}
 // Customer.init({

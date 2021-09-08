@@ -1,24 +1,32 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 const validator = require('email-validator')
-
-// this is proof concept that I can show a list of good emails and bad emails 
-// I would like to use logic/cleaned js instead of this file
+// we are taking the customers object read from file and converted into csv
+// we then running it against our email validator npm package
+// if email value is good we push it to clean emails if value is not clean we push it to bad 
+// list then attempt to clean it for the user
+// when we finished cleaning we should push the final data back to the cleaned already and return to the controller who will push back to the model 
+// or we could push it to model directly
 const cleaned = (req, res, customers) => {
-  let myCleanedlist = {}
-  const badEmailList = {}
+  const specialCharacters = [',', '!', '~', '$', '%', '^', '&', '*', '..', '...', '\'', ':', ';']
+  const space = ' '
 
-  for (let i = 0; i < customers.length; i++) {
-    console.log(customers[i].Email)
-    if (validator.validate(customers[i].Email)) {
-      console.log(`${ customers[i][1]} this customer has a valid email`)
-      // myCleanedlist = myCleanedlist += customers[i]
-    } else {
-      console.log(`${ customers[i][1] } this customer has an unusual email ...`)
-      // badEmailList = badEmailList += customers[i]
-    }
-  }
-  console.log(myCleanedlist)
-  console.log(badEmailList)
+  customers.map((customer) => {
+    specialCharacters.forEach((schar) => {
+      if (customer.email.includes(schar)) {
+        customer.email = customer.email.replace(schar, '')
+      }
+      if (customer.email.includes(space)) {
+        customer.email = customer.email.replace(space, '')
+      }
+    })
+
+    return customers
+  })
+
+  return customers
 }
+
 
 module.exports = { cleaned }
