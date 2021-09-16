@@ -1,31 +1,31 @@
-/* eslint-disable no-console */
-const CSVToJSON = require('csvtojson')
-const { cleaned } = require('./cleaned')
-// const { createData } = require('../router/router')
-const Customer = require('../models/customersModel')
+// The responsibility of the controller
+// is to controll the flow, and orchestracte what functions
+// are required to be called to perform a task.
 
-// data controller will read the uplpoaded customer csv file
-// convert into json object and pass the object to cleaned which is seperate logic 
-// to clean the values of emails from any bad characters...
-// once cleaning is done it will return cleaned customers instead of customers below
+const Customer = require('../models/customersModel');
 
-
-// our model will define the connection and the table we will use in the controller to bulk create the customers
-
-const dataController = (req, res) => {
-  CSVToJSON()
-    .fromFile('./public/CSV-customers.csv')
-    .then(async (customers) => {
-      let cleanCustomers = cleaned(req, res, customers)
-      // console.log(cleanCustomers)
-
-      await Customer.bulkCreate(cleanCustomers)
-
-      return res.send(cleanCustomers)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+const getCustomers = async () => {
+  return await // Access the model to return all the customers
 }
 
-module.exports = { dataController }
+const saveCustomers = (customers) => {
+  // What this function has to do is the following
+  // 1) iterate over the customers list and cleand the customers
+  //    to clean the customers use the following regular expression
+  //    /[,]+|[.]{2,}|\s/g
+  // 2) Bulk save all the customers using the customer model.
+  
+  // 1) Iterate over the customers list
+  const customersCleaned = customers.((customer) => {
+    const cleanEmail = customer.email.replace()
+
+    // How do we return the customer with the new email?
+    return {}
+  })
+
+  // 2) Save the customers in the DB
+  Customers.
+}
+
+
+module.exports = {dataController};
