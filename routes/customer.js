@@ -1,4 +1,4 @@
-const { getCustomers, saveCustomers } = require('../controllers/customerController');
+const { getCustomers, saveCustomers } = require('../controllers/customerController')
 
 // Customer routes is responsible to define the routes for the customer
 const routes = app => {
@@ -8,19 +8,48 @@ const routes = app => {
   // What type of request are we expecting? GET, POST, PATH, DELETE, and why?
   app.get('/customers', async (req, res) => {
     const customers = await getCustomers() // How do we get the customers?
+
     res.send(customers)
   })
 
   // 2) Route to save customers in bulk
   // '/uploadCustomers'
   // What type of request are we expecting? GET, POST, PATH, DELETE, and why?
-  app.('', (req, res) => {
-    const customersList = // How do we access the request to retrieve the customers?
+  app.post('/uploadCustomers', (req, res) => {
+    const customersList = req.body // How do we access the request to retrieve the customers?
+
+    console.log(customersList)
 
     // Calling the controller to handle the logic on how to save the customers.
-    saveCustomers(customersList)
-    res.send('Customers save successfully')
-  });
-};
+    try {
+      saveCustomers(customersList)
+      res.send('Customers Created Successfully')
+    } catch (err) {
+      console.log(err)
+      res.status(500).send(err)
+    }
+  })
+}
 
-module.exports = routes;
+module.exports = routes
+
+/* {
+  "email": "spa,dkins@att.net",
+  "firstName": "Giovanny",
+  "lastName": "Atkinson",
+  "phoneNumber": "(401)433-3114",
+  "city": "Warner",
+  "state": "NH",
+  "lastOrderPrice": "35",
+  "lastOrderDate": "44420"
+},
+{
+  "A": "zilla@optonline.net",
+  "B": "Olive",
+  "C": "Lang",
+  "D": "(618)472-3603",
+  "E": "East Natchitoches",
+  "F": "",
+  "G": "120",
+  "H": "44424"
+},*/
