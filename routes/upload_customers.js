@@ -1,4 +1,4 @@
-const uploadCsv = require('../controllers/customer.js')
+const { uploadCsv } = require('../controllers/customerController.js')
 
 const express = require('express')
 
