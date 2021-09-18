@@ -6,8 +6,8 @@ const routes = app => {
   // 1) Route to return all the customers
   // '/customers'
   // What type of request are we expecting? GET, POST, PATH, DELETE, and why?
-  app.('', (req, res) => {
-    const customers = // How do we get the customers?
+  app.get('/customers', async (req, res) => {
+    const customers = await getCustomers() // How do we get the customers?
     res.send(customers)
   })
 
