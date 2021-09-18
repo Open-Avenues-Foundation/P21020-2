@@ -7,12 +7,15 @@ const app = express();
 const PORT = process.env.PORT || 7000;
 
 const customerRoutes = require('./routes/customer');
+const textRoutes = require('./routes/text'); 
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
 // Here we are going to setup the customer routes
 customerRoutes(app);
+textRoutes(app);
+
 
 db.sequelize
   .authenticate()

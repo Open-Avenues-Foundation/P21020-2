@@ -5,7 +5,7 @@
 const Customer = require('../models/customersModel');
 
 const getCustomers = async () => {
-  return await // Access the model to return all the customers
+  return await Customer.findAll() // Access the model to return all the customers
 }
 
 const saveCustomers = (customers) => {
@@ -28,4 +28,4 @@ const saveCustomers = (customers) => {
 }
 
 
-module.exports = {dataController};
+module.exports = {dataController, getCustomers};
