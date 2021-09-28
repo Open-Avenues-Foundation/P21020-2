@@ -1,6 +1,22 @@
 import '../App.css';
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
+
 
 const BodyContent = () => {
+    const [customers, setCustomers] = useState([])
+    useEffect(() => {
+        axios.get('http://localhost:7000/customers')
+            .then(requestData => {
+                console.log(requestData)
+                const customerList = requestData.data
+                setCustomers(customerList)
+                
+                return customerList
+            }).catch(error => {
+                console.log(error + " : Or Customers Not Found")
+            })
+    }, [])
   return (
     <div className = "bodyContent">
         <form>
@@ -17,13 +33,9 @@ const BodyContent = () => {
                 <p>Customers uploaded listed here</p>
                 <p>select from the list the customers you'd like to send SMS message to</p>
                 <ul>
-                    <li>customer A</li>
-                    <li>customer B</li>
-                    <li>customer C</li>
-                    <li>customer D</li>
-                    <li>customer E</li>
-                    <li>customer F</li>
-                    <li>customer G</li>
+                    { customers.map(customer => {
+                            return <li>{customer.firstName} {customer.email}</li>
+                    }) }
                 </ul>
             </center>
         </div>
