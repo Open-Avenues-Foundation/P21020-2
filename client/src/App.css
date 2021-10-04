@@ -41,7 +41,13 @@ h1,h3{
   margin: 0 auto;
 
 }
-
+.messageBox{
+  height:200px;
+  width:100%;
+  padding-top: 0;
+  padding-left: 0;
+  line-height: 1em
+}
 .Footer{
   background-color: #282c34;
   display: flex;
