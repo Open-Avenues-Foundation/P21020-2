@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import CustomersList from './components/CustomerList'
 import CreateMessage from './components/CreateMessage'
+import UploadCSV from './components/UploadCSV';
 
 
 function App() {
@@ -13,12 +14,13 @@ function App() {
       <Header />
       <div className="container">
         <div className="row">
-          <div className="col col1">
+          <div className="col col-lg-12 col1">
+            <br/>
             <h2>Show List of customers</h2>
-            <h5>Or show msg asking for CSV to upload list of customers</h5>
             <CustomersList />
+            <UploadCSV />
           </div>
-          <div className="col col2">
+          <div className="col col-lg-8 col2">
             <h2>Create Message Here</h2>
             <p>
               We should have should be able to create the msg actually
@@ -26,8 +28,9 @@ function App() {
               when we type msg we have to be mindful of how many characters sms msg can have ?
             </p>
             <CreateMessage />
+            <br/>
           </div>
-          <div className="col col3">
+          <div className="col col-lg-4 col3">
             <h2>Display Message Sent Status here</h2>
             <p> in this section we will display either green KO messages sent or Red there is a failure</p>
           </div>
