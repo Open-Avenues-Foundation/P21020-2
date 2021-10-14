@@ -4,7 +4,7 @@ class CustomersList extends React.Component {
     render () {
       return (
         <div className='CustomersList'>
-                <table class="table">
+                <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>

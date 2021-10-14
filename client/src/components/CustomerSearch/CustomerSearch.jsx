@@ -8,27 +8,31 @@ const CustomerSearch = () => {
 /*  const [filteredCustomerList, setFilteredCustomerList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')*/
 
-  useEffect(() => {
-    fetchCustomers()
-  }, []) 
-
   const fetchCustomers = async () => {
-    let {data} = await axios.get('/customers')
-    setCustomerList(data)
-    console.log({data})
+    let {data} = await axios.get('http://localhost:7000/customers')
+    console.log(data)
+    return (
+      console.log('Hello World')
+    )
   }
+let fetchedCustomers = []
+  useEffect(() => {
+    fetchedCustomers = fetchCustomers()
+  }, []) 
 
   return (
     <div className="customers">
       <h1>Hello World</h1>
-      {
-      customerList.map(customer => {
-        return (<ul>
-          <li>{customer.name}</li>
-        </ul>
-        )
-      })
-      }
+      <ul>
+        {fetchedCustomers.map(customer => {
+          return (
+          <li>
+            {customer}
+          </li>
+          )
+        })
+        } 
+      </ul>
   </div>
   )
 }
