@@ -7,7 +7,6 @@ const saveMessage = async (req, res) => {
     'status': req.body.status
   }
 
-  console.log(newMessage)
   try {
     const saveNewMessage = await Message.create(message)
 
