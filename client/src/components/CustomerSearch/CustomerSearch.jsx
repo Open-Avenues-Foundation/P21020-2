@@ -8,30 +8,41 @@ const CustomerSearch = () => {
 /*  const [filteredCustomerList, setFilteredCustomerList] = useState([])
   const [searchTerm, setSearchTerm] = useState('')*/
 
-  const fetchCustomers = async () => {
-    let {data} = await axios.get('http://localhost:7000/customers')
-    console.log(data)
+  const fetchCustomers =  () => {
+    axios.get('http://localhost:7000/customers').then((response) => {
+    setCustomerList(response.data)
+    console.log(response)
+    }).catch((err) => {
+      console.log(err)
+    })
     return (
       console.log('Hello World')
     )
   }
-let fetchedCustomers = []
+
   useEffect(() => {
-    fetchedCustomers = fetchCustomers()
+    fetchCustomers()
   }, []) 
+
+  const renderCustomers = () => {
+    if (customerList.length === 0) {
+      return 'No customers available'
+    } else { 
+      return customerList.map(customer => {
+        return (
+          <li>
+            {customer}
+          </li>
+        )   
+      })
+    }
+  }
 
   return (
     <div className="customers">
       <h1>Hello World</h1>
       <ul>
-        {fetchedCustomers.map(customer => {
-          return (
-          <li>
-            {customer}
-          </li>
-          )
-        })
-        } 
+        {renderCustomers()}
       </ul>
   </div>
   )
