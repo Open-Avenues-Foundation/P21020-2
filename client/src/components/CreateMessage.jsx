@@ -1,8 +1,7 @@
 import React from 'react'
 
 
-class CreateMessage extends React.Component {
-    render () {
+const CreateMessage = ()=> {
       return (
         <div className='CreateMessage'>
             <h3>Type your message below:</h3>
@@ -22,8 +21,5 @@ class CreateMessage extends React.Component {
         </div>
       )
     }
-  }
 
- 
-
-  export default CreateMessage
+export default CreateMessage

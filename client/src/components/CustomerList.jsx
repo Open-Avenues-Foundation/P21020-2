@@ -1,7 +1,7 @@
 import React from 'react'
 
-class CustomersList extends React.Component {
-    render () {
+const CustomersList = ()=> {
+    
       return (
         <div className='CustomersList'>
                 <table class="table">
@@ -66,7 +66,7 @@ class CustomersList extends React.Component {
             </table>
             </div>
       )
-    }
+    
   }
 
   
