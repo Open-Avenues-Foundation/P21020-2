@@ -1,31 +1,35 @@
 /* eslint-disable no-console */
-const CSVToJSON = require('csvtojson')
-const { cleaned } = require('./cleaned')
-// const { createData } = require('../router/router')
+// The responsibility of the controller
+// is to controll the flow, and orchestracte what functions
+// are required to be called to perform a task.
+
 const Customer = require('../models/customersModel')
 
-// data controller will read the uplpoaded customer csv file
-// convert into json object and pass the object to cleaned which is seperate logic 
-// to clean the values of emails from any bad characters...
-// once cleaning is done it will return cleaned customers instead of customers below
-
-
-// our model will define the connection and the table we will use in the controller to bulk create the customers
-
-const dataController = (req, res) => {
-  CSVToJSON()
-    .fromFile('./public/CSV-customers.csv')
-    .then(async (customers) => {
-      let cleanCustomers = cleaned(req, res, customers)
-      // console.log(cleanCustomers)
-
-      await Customer.bulkCreate(cleanCustomers)
-
-      return res.send(cleanCustomers)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+const getCustomers = async () => {
+  return await Customer.findAll() // Access the model to return all the customers
 }
 
-module.exports = { dataController }
+const saveCustomers = async (customers) => {
+  // What this function has to do is the following
+  // 1) iterate over the customers list and cleand the customers
+  //    to clean the customers use the following regular expression
+  //    /[,]+|[.]{2,}|\s/g
+  // 2) Bulk save all the customers using the customer model.
+
+  // 1) Iterate over the customers list
+  const cleanCustomerList = customers.map(customer => {
+    const regex = /[,]+|[.]{2,}|\s/g
+
+    customer.email = customer.email.replace(regex, '')
+    console.log(customer)
+
+    return customer
+  })
+
+  console.log(cleanCustomerList)
+
+  return await Customer.bulkCreate(cleanCustomerList)
+}
+
+
+module.exports = { saveCustomers, getCustomers }
