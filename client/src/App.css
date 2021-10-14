@@ -1,32 +1,79 @@
-.App {
-  text-align: center;
+h1,h2,h3,h4,h5,h6{
+  margin:0;
+  font-family: 'Kalam', cursive;
+}
+p{
+  font-family: 'Sriracha', cursive;
+}
+.body{
+  margin:0;
+  padding:0;
+  width:100%;
+  height:800px;
+  
 }
 
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: white;
+ 
+}
+.Brand{
+  font-family: 'Kalam', cursive;
+}
+
+.col1{
+  padding-top:20px;
+  background-color:yellow;
+  min-height: 100px;
+}
+.col2{
+  padding-top:20px;
+  background-color:green;
+  min-height: 100px;
+}
+.col3{
+  padding-top:20px;
+  background-color:orange;
+  min-height: 100px;
+}
+
+.centre{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+.messageBox{
+  margin-top:20px;
+  height:200px;
+  width:100%;
+  padding-top: 0;
+  padding-left: 0;
+  line-height: 1em
+}
+.SearchBox{
+  width:200px;
+  margin:20px 20px 0px 20px;
+}
+.UploadCSV{
+  margin:1%;
+}
+.Footer{
+  padding:2%;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: white;
 }
 
-
-.bodyContent{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color:black;
-
-}
-
-.CustomersDisplay{
-  width:100%;
-  min-height:500px;
-  display: block;
-  border: 1px solid red;
-}
