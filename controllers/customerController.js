@@ -1,25 +1,35 @@
-const customers = require('../data/customersData')
-const sanitizeEmails = require('../models/customerModel')
+/* eslint-disable no-console */
+// The responsibility of the controller
+// is to controll the flow, and orchestracte what functions
+// are required to be called to perform a task.
 
-const uploadCsv = customers => {
-  // iterate over all the customers in the array.
-  const sanitizedCustomers = customers.map(customer => {
-    sanitizeEmails(customer)
-  })
+const Customer = require('../models/customersModel')
+
+const getCustomers = async () => {
+  return await Customer.findAll() // Access the model to return all the customers
 }
 
-const getCustomerById = async (req, res) => {
-  const id = req.params.id
-  const customerById = await customers.Customer.findOne({ // may need to rename based on model created by Sherron
-    where: { id },
-    include: [
-      { model: customers.phoneNumber } // may need to rename/adjust according to model
-    ]
+const saveCustomers = async (customers) => {
+  // What this function has to do is the following
+  // 1) iterate over the customers list and cleand the customers
+  //    to clean the customers use the following regular expression
+  //    /[,]+|[.]{2,}|\s/g
+  // 2) Bulk save all the customers using the customer model.
+
+  // 1) Iterate over the customers list
+  const cleanCustomerList = customers.map(customer => {
+    const regex = /[,]+|[.]{2,}|\s/g
+
+    customer.email = customer.email.replace(regex, '')
+    console.log(customer)
+
+    return customer
   })
 
-  return customerById ? res.send(customerById) : res.sendStatus(404).send('Customer Not Found')
+  console.log(cleanCustomerList)
+
+  return await Customer.bulkCreate(cleanCustomerList)
 }
 
 
-
-module.exports = { uploadCsv, getCustomerById }
+module.exports = { saveCustomers, getCustomers }
