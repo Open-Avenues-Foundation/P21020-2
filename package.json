@@ -4,11 +4,12 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "index.js",
     "lint": "eslint --format codeframe .",
     "lint:fix": "eslint --fix --format codeframe .",
     "dev": "nodemon server.js"
   },
+  "proxy": "http://localhost:3000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Open-Avenues-Foundation/P21020-2.git"
@@ -20,13 +21,14 @@
   },
   "homepage": "https://github.com/Open-Avenues-Foundation/P21020-2#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "csvtojson": "^2.0.10",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "fixemail": "^0.0.8",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

@@ -1,8 +1,8 @@
 import React from 'react'
 
 
-const UploadCSV =()=> {
-  
+class UploadCSV extends React.Component {
+    render () {
       return (
         <div className='UploadCSV'>
             <h3>Upload CSV to append to existing customers or add new customers</h3>
@@ -15,5 +15,8 @@ const UploadCSV =()=> {
         </div>
       )
     }
+  }
+
+ 
 
   export default UploadCSV
