@@ -28,7 +28,7 @@
     "fixemail": "^0.0.8",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",

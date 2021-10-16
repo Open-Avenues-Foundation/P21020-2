@@ -1,6 +1,7 @@
 // This server file is responsible for setting up everything
 // from the routes, to the db.
 
+/* eslint-disable no-console */
 const express = require('express')
 const db = require('./config/db')
 const app = express()
@@ -33,5 +34,6 @@ db.sequelize
   })
 
 app.listen(PORT, () => {
-  console.log('running')
+  console.log(`Your Web server is running on http://localhost:${PORT} and you're connected to the database server`)
 })
+
