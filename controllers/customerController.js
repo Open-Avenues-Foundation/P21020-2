@@ -31,11 +31,5 @@ const saveCustomers = async (customers) => {
   return await Customer.bulkCreate(cleanCustomerList)
 }
 
-      return res.send(cleanCustomers)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-}
 
 module.exports = { saveCustomers, getCustomers }

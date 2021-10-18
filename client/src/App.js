@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import Footer from './components/Footer'
 import CustomersList from './components/CustomerList'
-// import CreateMessage from './components/CreateMessage/CreateMessage'
+import CreateMessage from './components/CreateMessage/CreateMessage'
 import CustomerSearch from './components/CustomerSearch/CustomerSearch'
 import UploadCSV from './components/UploadCSV';
 
@@ -37,7 +37,7 @@ function App() {
               typing it out , select to whome we will be sending
               when we type msg we have to be mindful of how many characters sms msg can have ?
             </p>
-            {/* <CreateMessage /> */}
+          <CreateMessage />
             <br/>
           </div>
           <div className="col col-lg-4 col3">
