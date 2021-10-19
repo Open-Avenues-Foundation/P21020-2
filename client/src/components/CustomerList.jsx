@@ -1,8 +1,13 @@
 import React from 'react'
+import axios from 'axios'
 
-class CustomersList extends React.Component {
-    render () {
-      return (
+
+
+const CustomersList = ()=>{
+
+
+    return(
+        <>
         <div className='CustomersList'>
                 <table className="table">
                 <thead>
@@ -19,39 +24,9 @@ class CustomersList extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mohamed</td>
-                        <td>Hafez</td>
-                        <td>7047777454</td>
-                        <td>mhafez1978@outlook.com</td>
-                        <td>Lowell</td>
-                        <td>Massachussetts</td>
-                        <td>10-03-2021</td>
-                        <td>$29.99</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>first2</td>
-                        <td>last2</td>
-                        <td>4017653980</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>first3</td>
-                        <td>last3</td>
-                        <td>9807654321</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    
+                       
+                   
                     <tr>
                         <td colSpan="12">
                             <div className="centre">
@@ -65,10 +40,10 @@ class CustomersList extends React.Component {
                 </tbody>
             </table>
             </div>
-      )
-    }
-  }
 
-  
+        </>
+    )
 
-  export default CustomersList
+}
+
+export default CustomersList
