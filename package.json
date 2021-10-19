@@ -28,7 +28,9 @@
     "dotenv": "^10.0.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
+    "fast-csv": "^4.3.6",
     "fixemail": "^0.0.8",
+    "multer": "^1.4.3",
     "mysql2": "^2.3.0",
     "sequelize": "^6.6.5",
     "sequelize-cli": "^5.0.0"
