@@ -2,16 +2,20 @@
 require('dotenv').config()
 const express = require('express')
 const router = express.Router()
-const { saveMessage, sendMessage } = require('../controllers/smsController')
+const { createMessage } = require('../controllers/smsController')
 
-
+// router.get('/Messages', getAllMessages)
 
 router.post('/CreateMessage', async (req, res) => {
-  const{customerPhone, message} = req.body
-  console.log(process.env.TWILIO_ACCOUNT_SID)
-  const savedMessage = await saveMessage(customerPhone, message)
-  const sentMessage = await sendMessage(customerPhone, message)
+  const { customerPhone, message } = req.body
+
+  console.log(customerPhone, message)
+  const newMessage = await createMessage(customerPhone, message)
 })
+
+
+
+module.exports = router
 
 
 // const displayStatus = app {
@@ -24,5 +28,3 @@ router.post('/CreateMessage', async (req, res) => {
 //     res.sendStatus(200);
 //   });
 // }
-
-module.exports = router

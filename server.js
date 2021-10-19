@@ -10,7 +10,13 @@ const cors = require('cors')
 
 const customerRoutes = require('./routes/customer')
 const smsRoute = require('./routes/smsRoute')
+
+const corsOptions = {
+  origin: 'http://localhost:3000'
+}
+
 const csvRoute = require('./routes/csvRoute')
+
 
 
 app.use(express.urlencoded({ extended: true }))
@@ -33,7 +39,7 @@ app.use('/api/uploadcsv', csvRoute)
 db.sequelize
   .authenticate()
   .then(() => {
-    console.log('connected to db server');
+    console.log('connected to db server')
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err)
