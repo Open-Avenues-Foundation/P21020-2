@@ -6,20 +6,20 @@ import axios from 'axios';
 const CreateMessage = (props) => {
   const {setMessageAdded} = props
 
-  const [enteredMessage, setEnteredMessage] = useState({
-      to: '',
-      from: '',
-      body: '',
-  })
+  const [enteredMessage, setEnteredMessage] = useState('')
+
+  const [enteredNumber, setEnteredNumber] = useState('')
 
 const enterNewMessage = async (event) => {
-  event.preventDefault()
+event.preventDefault()
+console.log(enteredMessage)
+const data = {message: enteredMessage, customerPhone: enteredNumber }
   try {
-      const response = await axios.post('http://localhost:7000/CreateMessage', CreateMessage)
+      const response = await axios.post('http://localhost:7000/api/CreateMessage', data)
      setMessageAdded(true)
-      return response
+    console.log(response)
   } catch(error) {
-      return error
+    console.log(error)
   }
 }
 
@@ -28,9 +28,9 @@ return (
         <h3>Type your message below:</h3>
           <form action="">
               <label htmlFor="to">Recipient:</label>
-                  <input type="tel" name="to" id="to" value={enteredMessage.to} onChange={(event) => setEnteredMessage({to: event.target.value})} required />
+                  <input type="tel" name="to" id="to" value={enteredNumber} onChange={(event) => setEnteredNumber(event.target.value)} required />
               <label htmlFor="body">Body:</label>
-                  <input type="text" name="body" id="body" value={enteredMessage.body} onChange={(event) => setEnteredMessage({to: event.target.value})} required />
+                  <input type="text" name="body" id="body" value={enteredMessage} onChange={(event) => setEnteredMessage(event.target.value)} required />
               
               <button variant="primary" size="lg" className="sendmessage" onClick={(event) => enterNewMessage(event)}>Send New Text</button>
           </form>
