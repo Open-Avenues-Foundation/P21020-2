@@ -21,7 +21,11 @@ app.use(cors())
 
 // Here we are going to setup the customer routes
 customerRoutes(app)
-smsRoute(app)
+app.use('/api', smsRoute)
+app.get('/test', (req, res) => {
+  res.send('working')
+})
+
 
 
 db.sequelize
