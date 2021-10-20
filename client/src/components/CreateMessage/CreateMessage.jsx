@@ -1,7 +1,8 @@
 // import { on } from 'nodemon';
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import './CreateMessage.css'
-import axios from 'axios';
+import axios from 'axios'
+import Toast from 'react-bootstrap/Toast'
 
 const CreateMessage = (props) => {
   const {setMessageAdded} = props
@@ -9,6 +10,8 @@ const CreateMessage = (props) => {
   const [enteredMessage, setEnteredMessage] = useState('')
 
   const [enteredNumber, setEnteredNumber] = useState('')
+
+
 
 const enterNewMessage = async (event) => {
 event.preventDefault()
@@ -31,8 +34,8 @@ return (
                   <input type="tel" name="to" id="to" value={enteredNumber} onChange={(event) => setEnteredNumber(event.target.value)} required />
               <label htmlFor="body">Body:</label>
                   <input type="text" name="body" id="body" value={enteredMessage} onChange={(event) => setEnteredMessage(event.target.value)} required />
-              
-              <button variant="primary" size="lg" className="sendmessage" onClick={(event) => enterNewMessage(event)}>Send New Text</button>
+              <button variant="primary" size="lg" className="sendmessage" onClick={(event) => enterNewMessage(event)}>Send New Text
+              </button>
           </form>
       </div>
   )  
