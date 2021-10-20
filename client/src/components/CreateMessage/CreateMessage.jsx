@@ -21,9 +21,9 @@ console.log(enteredMessage)
 const data = {message: enteredMessage, customerPhone: enteredNumber }
 
   try {
+    setIsToastOpen(true)
       const response = await axios.post('http://localhost:7000/api/CreateMessage', data)
      setMessageAdded(true)
-     setIsToastOpen(true)
     console.log(response)
   } catch(error) {
     console.log(error)
