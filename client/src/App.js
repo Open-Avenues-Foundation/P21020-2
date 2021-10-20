@@ -7,6 +7,7 @@ import CustomersList from './components/CustomerList'
 import CreateMessage from './components/CreateMessage/CreateMessage'
 import CustomerSearch from './components/CustomerSearch/CustomerSearch'
 import UploadCSV from './components/UploadCSV';
+import Filter from './components/FilterCustomers/FilterCustomers'
 
 
 function App() {
@@ -46,6 +47,10 @@ function App() {
               I split this into another component
             </p>
             
+            <br/>
+            <p>
+            <Filter/>
+            </p>
             <br/>
           </div>
           <div className="col col-lg-8 col2">
