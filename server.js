@@ -19,7 +19,11 @@ app.use(cors())
 
 
 // Here we are going to setup the customer routes
+
+
 customerRoutes(app)
+
+app.use('/api/uploadcsv', csvRoute)
 
 app.use('/api', smsRoute)
 
@@ -27,7 +31,7 @@ app.get('/test', (req, res) => {
   res.send('working')
 })
 
-app.use('/api/uploadcsv', csvRoute)
+
 
 
 db.sequelize

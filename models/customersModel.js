@@ -36,7 +36,7 @@ const Customer = db.sequelize.define('customer', {
 
   },
   lastOrderDate: {
-    type: Sequelize.STRING
+    type: Sequelize.DATEONLY
   }
 }, {
   // Other model options go here

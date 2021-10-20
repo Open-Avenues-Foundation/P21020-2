@@ -1,15 +1,16 @@
 const fs = require('fs')
-const cvs = require('fast-csv')
-const models = require('../models')
+const csv = require('fast-csv')
+const customerModel = require('../models/customersModel')
 const { error } = require('console')
+
 
 const fileData = []
 const CsvException = (message) => {
   this.message = message
   this.status = 400
 }
-const csvhandler = () => {
-  fs.createReadStream(path).pipe(csv.parse({
+const csvhandler = (req,res) => {
+  fs.createReadStream(req.file.path).pipe(csv.parse({
     headers: ['email',
       'firstName',
       'lastName',
@@ -17,24 +18,28 @@ const csvhandler = () => {
       'city',
       'state',
       'lastOrderPrice'
-      , 'lastOrder'],
+      , 'lastOrderDate'],
     renameHeaders: true
   })).on('error', error => {
     throw error.message
   }).on('data', (data) => {
+    // cleanCSV data.email = cleanCSV(data.email) //
+    // This santizes the data ***** TODO: Make cleanup function
+    // const cleanData = cleanCSV(data)
+    // fileData.push(cleanData)
     fileData.push(data)
   }).on('end', async () => {
     try {
       if (fileData.length === 0) {
         throw new CsvException('there is an error in your csv data, please check and try again ... ')
       }
-      const results = await models.customersModel.bulkCreate(fileData, { validate: true })
+      const results = await customerModel.bulkCreate(fileData, { validate: true })
 
-      console.log(results)
+      res.send("Success ....")
     } catch (error) {
-      console.log(error)
+      res.status(500).send('There are errors')
     }
   })
 }
 
-module.exports = csvhandlder
+module.exports = csvhandler
