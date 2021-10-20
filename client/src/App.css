@@ -1,9 +1,11 @@
 h1,h2,h3,h4,h5,h6{
   margin:0;
-  font-family: 'Kalam', cursive;
+  font-family:  'Inter',sans-serif;
+  font-weight: bold;
 }
 p{
-  font-family: 'Sriracha', cursive;
+  font-family:  'Inter',sans-serif;
+  font-weight: bold;
 }
 .body{
   margin:0;
@@ -25,7 +27,7 @@ p{
  
 }
 .Brand{
-  font-family: 'Kalam', cursive;
+  font-family: 'Raleway Extrabold';
 }
 
 .col1{
