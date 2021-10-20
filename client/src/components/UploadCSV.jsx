@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react'
+import axios from 'axios'
+import './styles/UploadCSV.css'
 
 const UploadCSV = () => {
   let [file, setFile] = useState([]);
@@ -8,6 +9,7 @@ const UploadCSV = () => {
     event.preventDefault(); // prevents stops form from reloading
 
     let bodyData = new FormData();
+
 
     bodyData.append("file", file);
 
