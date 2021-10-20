@@ -1,13 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 
-class CustomersList extends React.Component {
-    render () {
-      return (
+const CustomersList = (props)=>{
+    
+    let { customers } = props
+    
+    return(
+        
+        <>
         <div className='CustomersList'>
                 <table className="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">Id</th>
                         <th scope="col">First</th>
                         <th scope="col">Last</th>
                         <th scope="col">Phone</th>
@@ -19,39 +24,25 @@ class CustomersList extends React.Component {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mohamed</td>
-                        <td>Hafez</td>
-                        <td>7047777454</td>
-                        <td>mhafez1978@outlook.com</td>
-                        <td>Lowell</td>
-                        <td>Massachussetts</td>
-                        <td>10-03-2021</td>
-                        <td>$29.99</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>first2</td>
-                        <td>last2</td>
-                        <td>4017653980</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>first3</td>
-                        <td>last3</td>
-                        <td>9807654321</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    {
+                        customers.length > 0 && customers.map(customer=>(
+                            <tr key={customer.id}>
+                                <td>{customer.id}</td>
+                                <td>{customer.firstName}</td>
+                                <td>{customer.lastName}</td>
+                                <td>{customer.phoneNumber}</td>
+                                <td>{customer.email}</td>
+                                <td>{customer.city}</td>
+                                <td>{customer.state}</td>
+                                <td>{customer.lastOrderDate}</td>
+                                <td>{customer.lastOrderPrice}</td>
+                            </tr>
+                            )
+                        )
+                    }
+                       
+                   {
+                       customers.length === 0 && 
                     <tr>
                         <td colSpan="12">
                             <div className="centre">
@@ -62,13 +53,14 @@ class CustomersList extends React.Component {
                             </div>
                         </td>
                     </tr>
+                    }
                 </tbody>
             </table>
             </div>
-      )
-    }
-  }
 
-  
+        </>
+    )
 
-  export default CustomersList
+}
+
+export default CustomersList
